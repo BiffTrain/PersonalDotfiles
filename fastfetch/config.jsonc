@@ -1,14 +1,14 @@
 // Inspired by Catnap
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo": {
-        "type": "small",
-        "source": "~/.config/fastfetch/AuraFarming.jpg",
-        "type": "kitty",
+"logo": {
+        "type": "file",
+        "source": "~/asciilogos/foot50.txt",
         "padding": {
-            "top": 1
+            "bottom":20
         }
     },
+
     "display": {
         "separator": " "
     },
@@ -52,22 +52,34 @@
             "type": "shell"
         },
         {
-            "key": "│ {#33}󰍛 cpu     {#keys}│",
+            "key": "│ {#33} monitor {#keys}│",
+            "type": "display",
+        },
+        {
+            "key": "│ {#34}󰍛 cpu     {#keys}│",
             "type": "cpu",
             "showPeCoreCount": true
         },
         {
-            "key": "│ {#34}󰉉 disk    {#keys}│",
+            "key": "│ {#35}󰍛 gpu     {#keys}│",
+            "type": "gpu",
+        },
+        {
+            "key": "│ {#36} battery {#keys}│",
+            "type": "battery",
+            "folders": "/"
+        },
+        {
+            "key": "│ {#31}󰉉 disk    {#keys}│",
             "type": "disk",
             "folders": "/"
         },
         {
-            "key": "│ {#34} package {#keys}│",
+            "key": "│ {#32} package {#keys}│",
             "type": "packages",
-            "folders": "/"
         },
         {
-            "key": "│ {#35} memory  {#keys}│",
+            "key": "│ {#33} memory  {#keys}│",
             "type": "memory"
         },
         {

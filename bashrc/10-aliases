@@ -22,7 +22,6 @@ alias cleanup='~/.config/ml4w/scripts/cleanup.sh'
 
 # custom alias
 alias update='sudo pacman -Syu && yay -Syu && flatpak update'
-alias fastfetch='fastfetch -l ~/.config/fastfetch/AuraFarming.jpg'
 alias weblogfetch='nmcli device show | grep IP4.DNS'
 alias retarded-ass-motherfucker-you-should-kill-yourself-NOW='reboot'
 alias kdeopenwithrefresh='sudo pacman -S archlinux-xdg-menu && XDG_MENU_PREFIX=arch- kbuildsycoca6'
