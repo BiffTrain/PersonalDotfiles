@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1750736007540919-1</unique-id>
+	<command>kitty</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>preferences-desktop-keyboard-shortcuts</icon>
+	<name>Create symlink</name>
+	<submenu></submenu>
+	<unique-id>1750736150317067-1</unique-id>
+	<command>ln -Ts %f %n&quot; (symlink)&quot;</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>Open As Root Here</name>
+	<submenu></submenu>
+	<unique-id>1750736954278280-1</unique-id>
+	<command>thunar admin:///%f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>
