@@ -7,7 +7,7 @@ in vec2 v_texcoord;
 uniform sampler2D tex;
 out vec4 fragColor;
 
-const float temperature = 5000.0;
+const float temperature = 4000.0;
 const float temperatureStrength = 1.0;
 
 #define WithQuickAndDirtyLuminancePreservation
