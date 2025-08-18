@@ -26,6 +26,7 @@ alias lt='eza -a --tree --level=1 --icons=always'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
+alias chw='cliphist wipe'
 
 # -----------------------------------------------------
 # CustomAlias
