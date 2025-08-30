@@ -108,7 +108,7 @@ fi
 # -----------------------------------------------------
 
 echo ":: Execute matugen with $used_wallpaper"
-$HOME/.cargo/bin/matugen image $used_wallpaper -m "dark"
+matugen image $used_wallpaper -m "dark"
 
 # -----------------------------------------------------
 # Walcord (NOT SUPPORTED)
