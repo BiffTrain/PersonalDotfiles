@@ -1,1 +1,1 @@
-kalk
+qalculate-gtk
