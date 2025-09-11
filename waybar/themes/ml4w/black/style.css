@@ -41,24 +41,24 @@
  padding: 0px 5px;
  margin: 4px 3px;
  border-radius: 10px;
- color: @on_surface;
+ color: @primary;
  transition: all 0.2s ease-in-out;
  opacity: 1.0;
  }
 
  #workspaces button.active {
- color: @on_primary;
- background: @primary;
+ color: @on_tertiary;
+ background: @tertiary;
  border-radius: 100px;
- min-width: 35px;
- transition: all 0.2s ease-in-out;
+ min-width: 45px;
+ transition: all 0.35s ease;
  opacity:1.0;
  }
 
  #workspaces button:hover {
- color: @on_primary;
- background: @primary;
- border-radius: 10px;
+ color: @on_tertiary;
+ background: @tertiary;
+ border-radius: 100px;
  opacity:0.8;
  }
 
@@ -83,11 +83,11 @@
   * ----------------------------------------------------- */
 
  #window {
- background: @background;
+ background: @primary;
  margin: 5px 15px 5px 0px;
  padding: 0px 10px 0px 10px;
  border-radius: 10px;
- color:@on_surface;
+ color:@on_tertiary;
  font-size:16px;
  font-weight:normal;
  opacity:1.0;
@@ -150,7 +150,9 @@
  #custom-chatgpt,
  #custom-calculator,
  #custom-windowsvm,
- #custom-cliphist,
+ #custom-cliphist {
+color: @primary;
+ }
  #custom-settings,
  #custom-wallpaper,
  #custom-system,
@@ -206,10 +208,11 @@
 
  #custom-tools {
  margin-right:12px;
+ color: @primary
  }
 
  #custom-hypridle.active {
- color: @iconcolor;
+ color: @primary;
  }
 
  #custom-hypridle.notactive {
@@ -280,7 +283,7 @@
  margin: 5px 10px 5px 10px;
  padding:0px 10px 0px 10px;
  font-size:20px;
- color: @on_surface;
+ color: @primary;
  opacity: 1.0;
  }
 
@@ -294,7 +297,7 @@
  border-radius:10px;
  padding:0px 15px 0px 10px;
  font-size:20px;
- color: @on_surface;
+ color: @primary;
  opacity: 1.0;
  }
 
@@ -366,9 +369,9 @@ opacity:1.0;
   * ----------------------------------------------------- */
 
  #clock {
- background-color: @background;
+ background-color: @primary;
  font-size: 16px;
- color: @on_surface;
+ color: @on_primary;
  border-radius: 10px;
  padding: 0px 10px 0px 10px;
  margin: 5px 0px 5px 0px;
@@ -397,7 +400,7 @@ opacity:1.0;
  #pulseaudio {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
+ color: @primary;
  border-radius: 10px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 10px;
@@ -416,7 +419,7 @@ opacity:1.0;
  #network {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
+ color: @primary;
  border-radius: 10px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 0px;
@@ -440,7 +443,7 @@ opacity:1.0;
  #bluetooth, #bluetooth.on {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
+ color: @primary;
  border-radius: 10px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 0px;
@@ -465,7 +468,7 @@ opacity:1.0;
  #battery {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
+ color: @primary;
  border-radius: 10px;
  padding: 0px 15px 0px 10px;
  margin: 5px 15px 5px 0px;
