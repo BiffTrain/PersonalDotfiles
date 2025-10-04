@@ -1,9 +1,9 @@
 #!/bin/bash
-#  _      __     ____                      
+#  _      __     ____
 # | | /| / /__ _/ / /__  ___ ____  ___ ____
 # | |/ |/ / _ `/ / / _ \/ _ `/ _ \/ -_) __/
-# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/   
-#                /_/       /_/             
+# |__/|__/\_,_/_/_/ .__/\_,_/ .__/\__/_/
+#                /_/       /_/
 # -----------------------------------------------------
 # Check to use wallpaper cache
 # -----------------------------------------------------
@@ -41,7 +41,7 @@ fi
 
 # Create folder with generated versions of wallpaper if not exists
 if [ ! -d $generatedversions ]; then
-    mkdir $generatedversions
+    mkdir -p $generatedversions
 fi
 
 # -----------------------------------------------------
@@ -65,17 +65,16 @@ tmpwallpaper=$wallpaper
 # Copy path of current wallpaper to cache file
 # -----------------------------------------------------
 
-if [ ! -f $cachefile ]; then
-    touch $cachefile
-fi
 echo "$wallpaper" >$cachefile
 echo ":: Path of current wallpaper copied to $cachefile"
 
 # -----------------------------------------------------
-# Get wallpaper filename
+# Get wallpaper filename and extension
 # -----------------------------------------------------
-wallpaperfilename=$(basename $wallpaper)
-echo ":: Wallpaper Filename: $wallpaperfilename"
+wallpaperfilename=$(basename "$wallpaper")
+extension="${wallpaperfilename##*.}"
+extension="${extension,,}"  # convert to lowercase
+echo ":: Wallpaper Filename: $wallpaperfilename, Extension: $extension"
 
 # -----------------------------------------------------
 # Wallpaper Effects
@@ -83,7 +82,7 @@ echo ":: Wallpaper Filename: $wallpaperfilename"
 
 if [ -f $wallpapereffect ]; then
     effect=$(cat $wallpapereffect)
-    if [ ! "$effect" == "off" ]; then
+    if [ "$effect" != "off" ]; then
         used_wallpaper=$generatedversions/$effect-$wallpaperfilename
         if [ -f $generatedversions/$effect-$wallpaperfilename ] && [ "$force_generate" == "0" ] && [ "$use_cache" == "1" ]; then
             echo ":: Use cached wallpaper $effect-$wallpaperfilename"
@@ -92,8 +91,7 @@ if [ -f $wallpapereffect ]; then
             notify-send --replace-id=1 "Using wallpaper effect $effect..." "with image $wallpaperfilename" -h int:value:33
             source $HOME/.config/hypr/effects/wallpaper/$effect
         fi
-        echo ":: Loading wallpaper $generatedversions/$effect-$wallpaperfilename with effect $effect"
-        echo ":: Setting wallpaper with $used_wallpaper"
+        echo ":: Loading wallpaper $used_wallpaper with effect $effect"
         touch $waypaperrunning
         waypaper --wallpaper $used_wallpaper
     else
@@ -106,14 +104,12 @@ fi
 # -----------------------------------------------------
 # Execute matugen
 # -----------------------------------------------------
-
 echo ":: Execute matugen with $used_wallpaper"
-matugen image $used_wallpaper -m "dark"
+matugen image "$used_wallpaper" -m "dark"
 
 # -----------------------------------------------------
 # Walcord (NOT SUPPORTED)
 # -----------------------------------------------------
-
 if type walcord >/dev/null 2>&1; then
     walcord
 fi
@@ -121,19 +117,16 @@ fi
 # -----------------------------------------------------
 # Reload Waybar
 # -----------------------------------------------------
-
 killall -SIGUSR2 waybar
 
 # -----------------------------------------------------
 # Reload nwg-dock-hyprland
 # -----------------------------------------------------
-
 $HOME/.config/nwg-dock-hyprland/launch.sh &
 
 # -----------------------------------------------------
 # Update Pywalfox
 # -----------------------------------------------------
-
 if type pywalfox >/dev/null 2>&1; then
     pywalfox update
 fi
@@ -145,37 +138,43 @@ sleep 0.1
 swaync-client -rs
 
 # -----------------------------------------------------
-# Created blurred wallpaper
+# Hyprshade toggle
 # -----------------------------------------------------
+hyprshade toggle blue-light-filter
 
-if [ -f $generatedversions/blur-$blur-$effect-$wallpaperfilename.png ] && [ "$force_generate" == "0" ] && [ "$use_cache" == "1" ]; then
-    echo ":: Use cached wallpaper blur-$blur-$effect-$wallpaperfilename"
+# -----------------------------------------------------
+# Skip ImageMagick for webp or gif
+# -----------------------------------------------------
+if [[ "$extension" == "webp" || "$extension" == "gif" ]]; then
+    echo ":: Skipping ImageMagick operations for $wallpaperfilename ($extension file)"
 else
-    echo ":: Generate new cached wallpaper blur-$blur-$effect-$wallpaperfilename with blur $blur"
-    # notify-send --replace-id=1 "Generate new blurred version" "with blur $blur" -h int:value:66
-    magick $used_wallpaper -resize 75% $blurredwallpaper
-    echo ":: Resized to 75%"
-    if [ ! "$blur" == "0x0" ]; then
-        magick $blurredwallpaper -blur $blur $blurredwallpaper
-        cp $blurredwallpaper $generatedversions/blur-$blur-$effect-$wallpaperfilename.png
-        echo ":: Blurred"
+    # -----------------------------------------------------
+    # Create blurred wallpaper
+    # -----------------------------------------------------
+    if [ -f $generatedversions/blur-$blur-$effect-$wallpaperfilename.png ] && [ "$force_generate" == "0" ] && [ "$use_cache" == "1" ]; then
+        echo ":: Use cached wallpaper blur-$blur-$effect-$wallpaperfilename"
+    else
+        echo ":: Generate new cached wallpaper blur-$blur-$effect-$wallpaperfilename with blur $blur"
+        magick "$used_wallpaper" -resize 75% "$blurredwallpaper"
+        echo ":: Resized to 75%"
+
+        if [ "$blur" != "0x0" ]; then
+            magick "$blurredwallpaper" -blur "$blur" "$blurredwallpaper"
+            cp "$blurredwallpaper" "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png"
+            echo ":: Blurred"
+        fi
     fi
+    cp "$generatedversions/blur-$blur-$effect-$wallpaperfilename.png" "$blurredwallpaper"
+
+    # -----------------------------------------------------
+    # Create rasi file
+    # -----------------------------------------------------
+    echo "* { current-image: url(\"$blurredwallpaper\", height); }" >"$rasifile"
+
+    # -----------------------------------------------------
+    # Create square wallpaper
+    # -----------------------------------------------------
+    echo ":: Generate new cached wallpaper square-$wallpaperfilename"
+    magick "$tmpwallpaper" -gravity Center -extent 1:1 "$squarewallpaper"
+    cp "$squarewallpaper" "$generatedversions/square-$wallpaperfilename.png"
 fi
-cp $generatedversions/blur-$blur-$effect-$wallpaperfilename.png $blurredwallpaper
-
-# -----------------------------------------------------
-# Create rasi file
-# -----------------------------------------------------
-
-if [ ! -f $rasifile ]; then
-    touch $rasifile
-fi
-echo "* { current-image: url(\"$blurredwallpaper\", height); }" >"$rasifile"
-
-# -----------------------------------------------------
-# Created square wallpaper
-# -----------------------------------------------------
-
-echo ":: Generate new cached wallpaper square-$wallpaperfilename"
-magick $tmpwallpaper -gravity Center -extent 1:1 $squarewallpaper
-cp $squarewallpaper $generatedversions/square-$wallpaperfilename.png
