@@ -28,7 +28,7 @@
  background: @background;
  margin: 5px 20px 5px 2px;
  padding: 0px 5px;
- border-radius: 10px;
+ border-radius: 30px;
  border: 0px;
  font-weight: bold;
  font-style: normal;
@@ -40,24 +40,24 @@
  #workspaces button {
  padding: 0px 5px;
  margin: 4px 3px;
- border-radius: 10px;
- color: @on_surface;
+ border-radius: 2px;
+ color: @primary;
  transition: all 0.2s ease-in-out;
  opacity: 1.0;
  }
 
  #workspaces button.active {
- color: @on_primary;
- background: @primary;
- border-radius: 100px;
- min-width: 35px;
- transition: all 0.2s ease-in-out;
+ color: @on_tertiary;
+ background: @tertiary;
+ border-radius: 10px;
+ min-width: 45px;
+ transition: all 0.35s ease;
  opacity:1.0;
  }
 
  #workspaces button:hover {
- color: @on_primary;
- background: @primary;
+ color: @on_tertiary;
+ background: @tertiary;
  border-radius: 10px;
  opacity:0.8;
  }
@@ -67,10 +67,10 @@
   * ----------------------------------------------------- */
 
  tooltip {
-     border-radius: 16px;
+     border-radius: 30px;
      background-color: @primary;
      opacity:0.9;
-     padding:20px;
+     padding:25px;
      margin:0px;
  }
 
@@ -83,11 +83,11 @@
   * ----------------------------------------------------- */
 
  #window {
- background: @background;
+ background: @primary;
  margin: 5px 15px 5px 0px;
  padding: 0px 10px 0px 10px;
- border-radius: 10px;
- color:@on_surface;
+ border-radius: 30px;
+ color:@on_primary;
  font-size:16px;
  font-weight:normal;
  opacity:1.0;
@@ -150,7 +150,9 @@
  #custom-chatgpt,
  #custom-calculator,
  #custom-windowsvm,
- #custom-cliphist,
+ #custom-cliphist {
+color: @primary;
+ }
  #custom-settings,
  #custom-wallpaper,
  #custom-system,
@@ -206,10 +208,11 @@
 
  #custom-tools {
  margin-right:12px;
+ color: @primary
  }
 
  #custom-hypridle.active {
- color: @iconcolor;
+ color: @primary;
  }
 
  #custom-hypridle.notactive {
@@ -263,7 +266,7 @@
  background-color: @backgrounddark;
  font-size: 16px;
  color: @textcolor1;
- border-radius: 15px;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 3px 17px 3px 0px;
  opacity:0.8;
@@ -276,11 +279,11 @@
 
  #custom-notification {
  background-color:@background;
- border-radius:10px;
+ border-radius:30px;
  margin: 5px 10px 5px 10px;
  padding:0px 10px 0px 10px;
  font-size:20px;
- color: @on_surface;
+ color: @primary;
  opacity: 1.0;
  }
 
@@ -291,10 +294,10 @@
  #custom-exit {
  background-color:@background;
  margin: 5px 10px 5px 0px;
- border-radius:10px;
+ border-radius:30px;
  padding:0px 15px 0px 10px;
  font-size:20px;
- color: @on_surface;
+ color: @primary;
  opacity: 1.0;
  }
 
@@ -332,7 +335,7 @@
 
 #custom-cliphist,#custom-hypridle {
 background-color: @background;
-border-radius:10px;
+border-radius:30px;
 padding: 0px 11px 0px 7px;
 margin: 5px 2px 5px 2px;
 opacity:1.0;
@@ -340,7 +343,7 @@ opacity:1.0;
 
 #custom-tools {
 background-color: @background;
-border-radius:10px;
+border-radius:30px;
 padding: 0px 10px 0px 10px;
 margin: 5px 2px 5px 2px;
 opacity:1.0;
@@ -366,10 +369,10 @@ opacity:1.0;
   * ----------------------------------------------------- */
 
  #clock {
- background-color: @background;
+ background-color: @primary;
  font-size: 16px;
- color: @on_surface;
- border-radius: 10px;
+ color: @on_primary;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 5px 0px 5px 0px;
  opacity:1.0;
@@ -384,7 +387,7 @@ opacity:1.0;
  background-color: @backgroundlight;
  font-size: 16px;
  color: @textcolor2;
- border-radius: 10px;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 0px;
  opacity:0.8;
@@ -397,8 +400,8 @@ opacity:1.0;
  #pulseaudio {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
- border-radius: 10px;
+ color: @primary;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 10px;
  opacity:1.0;
@@ -416,8 +419,8 @@ opacity:1.0;
  #network {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
- border-radius: 10px;
+ color: @primary;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 0px;
  opacity:1.0
@@ -440,8 +443,8 @@ opacity:1.0;
  #bluetooth, #bluetooth.on {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
- border-radius: 10px;
+ color: @primary;
+ border-radius: 30px;
  padding: 0px 10px 0px 10px;
  margin: 5px 15px 5px 0px;
  opacity:1.0;
@@ -465,8 +468,8 @@ opacity:1.0;
  #battery {
  background-color: @background;
  font-size: 16px;
- color: @on_surface;
- border-radius: 10px;
+ color: @primary;
+ border-radius: 30px;
  padding: 0px 15px 0px 10px;
  margin: 5px 15px 5px 0px;
  opacity:1.0;
@@ -500,7 +503,7 @@ opacity:1.0;
 
  #tray {
  background-color: @background;
- border-radius:10px;
+ border-radius:30px;
  padding: 0px 10px 0px 10px;
   margin: 5px 10px 5px 0px;
  }
