@@ -27,6 +27,7 @@ alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
 alias chw='cliphist wipe'
+alias hy='Hyprland'
 
 # -----------------------------------------------------
 # CustomAlias
