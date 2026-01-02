@@ -27,6 +27,7 @@ alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
 alias chw='cliphist wipe'
+alias hy='start-hyprland'
 
 # -----------------------------------------------------
 # CustomAlias
@@ -35,7 +36,5 @@ alias update='sudo pacman -Syu && yay -Syu && flatpak update'
 alias weblogfetch='nmcli device show | grep IP4.DNS'
 alias retarded-ass-motherfucker-you-should-kill-yourself-NOW='reboot'
 alias keybindconf='$EDITOR ~/.config/hypr/conf/keybinding.conf'
-alias OpenAsar='./.config/hypr/scripts/OpenAsar/OpenAsar.sh'
-
 
 end
