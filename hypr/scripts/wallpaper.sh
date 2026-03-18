@@ -105,7 +105,7 @@ fi
 # Execute matugen
 # -----------------------------------------------------
 echo ":: Execute matugen with $used_wallpaper"
-matugen image "$used_wallpaper" -m "dark"
+matugen image "$used_wallpaper" -m "dark" --source-color-index 0
 
 # -----------------------------------------------------
 # Walcord (NOT SUPPORTED)

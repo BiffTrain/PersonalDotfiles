@@ -25,10 +25,12 @@ if status is-interactive
     alias lt='eza -a --tree --level=1 --icons=always'
     alias v='$EDITOR'
     alias vim='$EDITOR'
+    alias w='nmtui'
     alias wifi='nmtui'
     alias chw='cliphist wipe'
     alias hy='start-hyprland'
     alias tclock='tclock -c blue'
+    alias clock='tclock'
     alias cl='tclock'
 
     # -----------------------------------------------------
