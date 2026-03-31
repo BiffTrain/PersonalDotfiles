@@ -47,7 +47,7 @@ fi
 if [[ "$1" == "lock" ]]; then
   echo ":: Lock"
   sleep 0.5
-  hyprlock
+  ~/.local/share/quickshell-lockscreen/lock.sh
 fi
 
 if [[ "$1" == "reboot" ]]; then
