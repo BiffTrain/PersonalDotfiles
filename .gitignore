@@ -1,2 +1,3 @@
 #Ignore cache in ml4w
 dotfiles/ml4w/cache/wallpaper-generated/
+.git/
